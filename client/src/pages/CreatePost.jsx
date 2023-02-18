@@ -39,7 +39,7 @@ const CreatePost = () => {
     } else {
       alert('Please enter a prompt');
     }
-  }
+  };
 
   // Handle Submit
   const handleSubmit = async (e) => {
@@ -56,7 +56,6 @@ const CreatePost = () => {
           },
           body: JSON.stringify(form),
         });
-
         await response.json();
         navigate('/');
       } catch (error) {
@@ -67,7 +66,7 @@ const CreatePost = () => {
     } else {
       alert('Please enter a prompt and generate an image');
     }
-  }
+  };
 
   // Handle Change
   const handleChange = (e) => {
@@ -88,7 +87,7 @@ const CreatePost = () => {
         <p className="mt-2 text-[#666e75] text-[16px] max-w-[500px]">Create imaginative and visually stunning images through DALL-E AI and share them with the community</p>
       </div>
       {/* Form field */}
-      <form className="mt-16 max-w-3xl" onClick={handleSubmit}>
+      <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5">
           <FormField 
             labelName="Your name"
@@ -153,7 +152,7 @@ const CreatePost = () => {
         </div>
       </form>
     </section>
-  )
-}
+  );
+};
 
-export default CreatePost
+export default CreatePost;

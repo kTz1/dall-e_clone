@@ -23,7 +23,7 @@ const App = () => {
         </Routes>
       </main>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default App;

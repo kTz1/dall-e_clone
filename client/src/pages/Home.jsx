@@ -9,13 +9,13 @@ const RenderCards = ({ data, title}) => {
         key={post._id} 
         {...post}
       />
-    )
-  }
+    );
+  };
 
   return (
     <h2 className="mt-5 font-bold text-[#6449ff] text-xl uppercase">{title}</h2>
   )
-}
+};
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -25,41 +25,37 @@ const Home = () => {
   const [searchTimeout, setSearchTimeout] = useState(null);
 
   // Fetch and display the post from user
-  useEffect(() => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      
-      try {
-        const response = await fetch('http://localhost:8080/api/v1/post', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        
-        if(response.ok) {
-          const result = await response.json();
-          
-          setAllPosts(result.data.reverse());
-        }
-      } catch (error) {
-        alert(error);
-      } finally {
-        setLoading(false);
+  const fetchPosts = async () => {
+    setLoading(true);
+    
+    try {
+      const response = await fetch('http://localhost:8080/api/v1/post', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if(response.ok) {
+        const result = await response.json();
+        setAllPosts(result.data.reverse());
       }
+    } catch (error) {
+      alert(error);
+    } finally {
+      setLoading(false);
     }
+  };
   
+  useEffect(() => {
     fetchPosts();
   }, []);
 
   // Search
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
-
     setSearchTimeout(
       setTimeout(() => {
         const searchResults = allPosts.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()) || item.prompt.toLowerCase().includes(searchText.toLowerCase()));
-  
         setSearchedResults(searchResults);
       }, 500)
     );
@@ -113,7 +109,7 @@ const Home = () => {
         )}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

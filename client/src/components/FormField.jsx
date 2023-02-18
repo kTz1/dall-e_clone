@@ -33,7 +33,7 @@ const FormField = ({ labelName, type, name, placeholder, value, handleChange, is
         required
       />
     </div>
-  )
-}
+  );
+};
 
-export default FormField
+export default FormField;

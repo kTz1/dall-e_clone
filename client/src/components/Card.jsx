@@ -34,7 +34,7 @@ const Card = ({ _id, name, prompt, photo }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
